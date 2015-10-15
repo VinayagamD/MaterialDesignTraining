@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.wattabyte.materialdesigntraining.network.VolleySingelton;
 
 /**
  * Created by Vinayagam on 10/12/15.
@@ -42,7 +43,7 @@ public class MyFragment extends Fragment {
         if (bundle!= null)
             textView.setText(String.format("The page currently selected is %d", bundle.getInt(POSITON)));
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = VolleySingelton.getInstance().getRequestQueue();
         StringRequest stringRequest  = new StringRequest(Request.Method.GET, "http://php.net/", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
